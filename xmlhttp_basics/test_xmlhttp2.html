@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning xmlhttpreqeust</title>
+    <link rel="faviicon" href="#">
+</head>
+<body>
+    <h1>Learning xmlhttp</h1>
+    <p>
+
+    </p>
+    <script>
+        //checking xmlhttp status and statustext 0,1,2,3,4
+        //0=unsent
+        //1=opened
+        //2 = headers received
+        //3 =loading
+        //4 = done
+        let url = "https://jsonplaceholder.typicode.com/todos/1";
+let request = new XMLHttpRequest();
+console.log( "0= unsend " + request.readyState  ); // 0
+//after calling open the state will be changed to 1
+
+request.open("GET", url);
+console.log("1= Opened " +request.readyState); // 1
+
+// we need to implement readystatechange event to detect 2,3,4, events
+request.onreadystatechange = function() {
+    //console.log(request.readyState)
+    if (request.readyState == 2) {
+        console.log("2=Header received" );
+    } else if (request.readyState == 3) {
+        console.log("3= loading");
+    } else if (request.readyState == 4) {
+        console.log("4 = done, Request Finished");
+        if(request.status==4){
+        console.log(request.response);
+    }
+    } 
+   
+};
+
+request.send()
+
+    </script>
+    
+</body>
+</html>

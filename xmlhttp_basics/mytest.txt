@@ -1,0 +1,2 @@
+this is exampl of reading xmlhttpreqeust
+this is second line
